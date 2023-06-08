@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Photo;
+use App\Validators\FormValidator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -39,9 +40,12 @@ class PhotoAlbumController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        //
+        FormValidator::check($request, [
+            'title' => 'required',
+            'desc' => 'required|numeric'
+        ]);
     }
 
     /**
