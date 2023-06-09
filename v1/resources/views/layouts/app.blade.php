@@ -18,41 +18,20 @@
         <a href="/"
             class='translation duration-300 border bg-purple-200 h-15 inline-block p-3 m-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl'>Главная</a>
 
-        <a href="/biography"
-            class='translation duration-300 border bg-purple-200 h-15 inline-block p-3 m-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl'>Биография</a>
+        <a href="{{ route('discipline.test.index') }}"
+            class='translation duration-300 border bg-purple-200 h-15 inline-block p-3 m-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl'>Тест по дисциплине</a>
 
         <a href="{{ route('photo.album.index') }}"
             class="translation duration-300 border bg-purple-200 h-15 inline-block p-3 m-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl">Фотоальбом</a>
 
-        <a href="/contacts"
+        <a href="{{ route('contacts.index') }}"
             class="translation duration-300 border bg-purple-200 h-15 inline-block p-3 m-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl">Контакты</a>
 
         <a href="{{ route('interests.index') }}"
             class="translation duration-300 border bg-purple-200 h-15 inline-block p-3 m-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl">Интересы</a>
 
-        <div id="current_time" class="inline-block text-xl text-purple-600 font-bold"></div>
+        <div id="current_time" class="inline-block text-xl font-bold"></div>
     </div>
-
-    @if (count($errors))
-        <div class="bg-red-400 border-2 border-red-600 rounded-xl translation hover:bg-red-500 duration-300 m-6 p-3">
-            <p class="font-bold text-lg mb-2">Что-то пошло не так</p>
-            <ul>
-                @foreach ($errors as $key => $error)
-                    <li>
-                        {{ $key }}:
-                        <ul>
-                            @foreach ($error as $errorDescription)
-                                <li class="mx-2">
-                                    {{ $errorDescription }}
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-
-    @endif
 
     @yield('content')
 
