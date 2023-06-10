@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 
 class TestFormValidator extends FormValidator
 {
-    private static function validation(Request $request)
+    public static function validation(Request $request)
     {
         return FormValidator::make($request->all(), [
-            'Полное_имя' => ['required', new FullName()],
-            'Группа' => 'required',
-            'Почта' => 'required|email:rfc,dns',
-            'Вопрос_1' => 'required',
-            'Вопрос_2' => 'required',
-            'Вопрос_3' => 'required',
+            'full_name' => ['required', new FullName()],
+            'group' => 'required',
+            'email' => 'required|email:rfc,dns',
+            'question_1' => 'required',
+            'question_2' => 'required',
+            'question_3' => 'required',
         ], [
                 'required' => 'Поле ":attribute" должно быть заполнено.',
                 'regex' => 'Введите номер телефона корректно.',

@@ -10,31 +10,9 @@
         </div>
     @endif
 
-    @if (Session::has('errors'))
-        @php
-            $errors = Session::get('errors');
-        @endphp
+    @include('layouts.errors.validation')
 
-        <div class="bg-red-400 border-2 border-red-600 rounded-xl translation hover:bg-red-500 duration-300 m-6 p-3">
-            <p class="font-bold text-lg mb-2">Что-то пошло не так</p>
-            <ul>
-                @foreach ($errors as $key => $error)
-                    <li>
-                        {{ $key }}:
-                        <ul>
-                            @foreach ($error as $errorDescription)
-                                <li class="mx-2">
-                                    {{ $errorDescription }}
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    <div class="mx-[30%]">
+    <div class="mx-[30%] max-lg:mx-[10%]">
         <p class="m-6 font-bold text-4xl text-center">Форма ввода данных</p>
 
         <form action="{{ route('contacts.store') }}" method="POST" id='contacts'>
@@ -76,7 +54,8 @@
 
             <div class="my-4">
                 <label for="Пол">Укажите ваш пол:</label>
-                <select name="Пол" id="Пол" class="w-full border-2 border-purple-400 rounded block focus:outline-none">
+                <select name="Пол" id="Пол"
+                    class="w-full border-2 border-purple-400 rounded block focus:outline-none">
                     <option value="" disabled selected>Выберите ваш пол</option>
                     <option value="female">Женский</option>
                     <option value="male">Мужской</option>
@@ -85,19 +64,20 @@
 
             <div class="my-4">
                 <label for="Номер_телефона" class="block">Номер телефона</label>
-                <input type="text" name="Номер_телефона" class="w-full border-2 border-purple-400 rounded focus:outline-none"
-                    placeholder="(###) ###-##-##">
+                <input type="text" name="Номер_телефона"
+                    class="w-full border-2 border-purple-400 rounded focus:outline-none" placeholder="(###) ###-##-##">
             </div>
 
             <div class="my-4">
                 <label for="Электронная_почта" class="block">Электронная почта</label>
-                <input type="text" name="Электронная_почта" class="w-full border-2 border-purple-400 rounded focus:outline-none"
-                    placeholder="example@email.com">
+                <input type="text" name="Электронная_почта"
+                    class="w-full border-2 border-purple-400 rounded focus:outline-none" placeholder="example@email.com">
             </div>
 
             <div class="my-4">
                 <label for="День_рождения" class="block">Дата рождения</label>
-                <input type="date" name="День_рождения" class="w-full border-2 border-purple-400 rounded focus:outline-none">
+                <input type="date" name="День_рождения"
+                    class="w-full border-2 border-purple-400 rounded focus:outline-none">
             </div>
 
             <div class="my-4">

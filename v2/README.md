@@ -6,7 +6,7 @@
 
 Установка зависимостей
 
-    composer upgrade; 
+    composer install; 
     npm install;
 
 Загрузка фотогдафий для фотоальбома. Для этого cначала нужно подключить публичный диск
@@ -34,6 +34,12 @@
 - IMG_1682.jpeg
 - IMG_4731.JPG
 - Tul2D_mUPMo.jpg
+
+
+Теперь необходимо созадть новый файл для сохранения сообщений пользователей в гостевую книгу. Для этого надо создать файл messages.inc в папке storage/app/messages
+
+    mkdir storage/app/messages;
+    echo "[]" > storage/app/messages/messages.inc;
 
 ---
 

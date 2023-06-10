@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="mx-[30%]">
+    <div class="mx-[30%] max-lg:mx-[10%]">
         @foreach ($categories as $category)
             <p class="m-6 font-bold text-lg">{{ $category->title }}</p>
             <div class="columns-2 space-y-4">

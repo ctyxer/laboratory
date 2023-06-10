@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\DisciplineTestController;
+use App\Http\Controllers\GuestBookDownloadController;
+use App\Http\Controllers\GuestBookController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InterestController;
 use App\Http\Controllers\PhotoAlbumController;
 use App\Http\Controllers\ContactController;
@@ -16,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', [HomeController::class, 'index'])
+    ->name('home.index');
+
 Route::group([
     'prefix' => '/interests',
     'as' => 'interests.'
@@ -47,6 +53,20 @@ Route::group([
 
     Route::post('/store', [DisciplineTestController::class, 'store'])
         ->name('store');
+});
+
+Route::group([
+    'prefix' => '/guest/book',
+    'as' => 'guest.book.'
+], function () {
+    Route::get('/index', [GuestBookController::class, 'index'])
+        ->name('index');
+
+    Route::post('/store', [GuestBookController::class, 'store'])
+        ->name('store');
+
+    Route::get('/download/index', [GuestBookDownloadController::class, 'index'])
+        ->name('download.index');
 });
 
 Route::get('/photo/album/index', [PhotoAlbumController::class, 'index'])

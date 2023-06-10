@@ -10,45 +10,22 @@
         </div>
     @endif
 
-    @if (Session::has('errors'))
-        @php
-            $errors = Session::get('errors');
-        @endphp
-
-        <div class="bg-red-400 border-2 border-red-600 rounded-xl translation hover:bg-red-500 duration-300 m-6 p-3">
-            <p class="font-bold text-lg mb-2">Что-то пошло не так</p>
-            <ul>
-                @foreach ($errors as $key => $error)
-                    <li>
-                        {{ $key }}:
-                        <ul>
-                            @foreach ($error as $errorDescription)
-                                <li class="mx-2">
-                                    {{ $errorDescription }}
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    <div class="mx-[30%]">
+    <div class="mx-[30%] max-lg:mx-[10%]">
         <p class="m-6 font-bold text-4xl text-center">Тест по дисциплине</p>
 
         <form action="{{ route('discipline.test.store') }}" method="POST" id='test'>
             @csrf
             <div class="my-4">
-                <label for="full_name" class="block">Введите ФИО</label>
-                <input type="text" name="Полное_имя" class="w-full border-2 border-purple-400 rounded"
-                    placeholder="Степаненко Мария Денисовна">
+                <label for="full_name" class="block @error('full_name') font-red-500 @enderror">Введите ФИО</label>
+                <input type="text" name="full_name"
+                    class="w-full border-2 border-purple-400 rounded @error('full_name') border-red-500 @enderror"
+                    placeholder="Степаненко Мария Денисовна" value="{{ old('full_name') }}">
             </div>
 
             <div class="my-4">
-                <p>Выберите вашу группу</p>
-                <select name="Группа" size="15" multiple="multiple"
-                    class="bg-inherit focus:outline-none overflow-hidden border-purple-400 border-2 rounded p-1">
+                <p @error('full_name') class="font-red-500" @enderror>Выберите вашу группу</p>
+                <select name="group" size="15"
+                    class="bg-inherit focus:outline-none overflow-hidden border-purple-400 border-2 rounded p-1 @error('full_name') border-red-500 @enderror">
                     <optgroup label="1 курс">
                         <option value="1" class="checked:bg-purple-500">Ит/б-22-1-о</option>
                         <option value="2">Ит/б-22-2-о</option>
@@ -72,44 +49,48 @@
             </div>
 
             <div class="my-4 mb-8">
-                <label for="Почта" class="block">Электронная почта</label>
-                <input type="text" name="Почта" class="w-full border-2 border-purple-400 rounded focus:outline-none"
-                    placeholder="example@email.com">
+                <label for="email" class="block">Электронная почта</label>
+                <input type="text" name="email"
+                    class="w-full border-2 border-purple-400 rounded focus:outline-none @error('email') border-red-500 @enderror"
+                    placeholder="example@email.com" value="{{ old('email') }}">
             </div>
 
             <div class="my-4">
-                <p class="font-bold">Вопрос №1</p>
+                <p class="font-bold @error('question_1') text-red-500 @enderror">Вопрос №1</p>
                 <legend>Логический тип:</legend>
 
                 <div>
-                    <input type="radio" id="question_1" name="Вопрос_1" value="float" class="accent-purple-500">
+                    <input type="radio" id="question_1" name="question_1" value="float" class="accent-purple-500">
                     <label for="question_1">float</label>
                 </div>
                 <div>
-                    <input type="radio" id="question_1_2" name="Вопрос_1" value="boolean" class="accent-purple-500">
+                    <input type="radio" id="question_1_2" name="question_1" value="boolean" class="accent-purple-500">
                     <label for="question_1_2">boolean</label>
                 </div>
             </div>
 
             <div class="my-4">
-                <p class="font-bold">Вопрос №2</p>
-                <label for="question_2">2+2=?:</label>
-                <select name="Вопрос_2" id="question_2" class="w-full border-2 border-purple-400 rounded block">
-                    <option value="null" selected disabled>Выберите ответ</option>
-                    <option value="100">100</option>
-                    <option value="4">4</option>
-                </select>
-            </div>
+                        <p class="font-bold @error('question_2') text-red-500 @enderror">Вопрос №2</p>
+                        <label for="question_2">2+2=?:</label>
+                        <select name="question_2" id="question_2"
+                            class="w-full border-2 border-purple-400 rounded block @error('question_2') border-red-500 @enderror">
+                            <option value="null" selected disabled>Выберите ответ</option>
+                            <option value="100">100</option>
+                            <option value="4">4</option>
+                        </select>
+                </div>
 
-            <div class="my-4">
-                <p class="font-bold">Вопрос №3</p>
-                <label for="question_3" class="block">Имя первого программиста? (на русской раскладке в порядке "Имя Фамилия")</label>
-                <input type="text" name="Вопрос_3" class="w-full border-2 border-purple-400 rounded focus:outline-none"
-                    placeholder="Линус Торвальдс">
-            </div>
+                <div class="my-4">
+                    <p class="font-bold @error('question_3') text-red-500 @enderror">Вопрос №3</p>
+                    <label for="question_3" class="block">Имя первого программиста? (на русской раскладке в порядке "Имя
+                        Фамилия")</label>
+                    <input type="text" name="question_3"
+                        class="w-full border-2 border-purple-400 rounded focus:outline-none @error('question_3') border-red-500 @enderror"
+                        placeholder="Линус Торвальдс" value="{{ old('question_3') }}">
+                </div>
 
-            <input type="submit" value="Отправить"
-                class='translation duration-300 border bg-purple-200 h-15 inline-block p-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl'>
+                <input type="submit" value="Отправить"
+                    class='translation duration-300 border bg-purple-200 h-15 inline-block p-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl'>
         </form>
     </div>
 @endsection
