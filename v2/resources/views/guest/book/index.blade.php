@@ -42,15 +42,19 @@
 
         <div>
             <p class="m-6 font-bold text-3xl text-center mt-12">Оставленные сообщения</p>
-            
-            <a href="{{ route('guest.book.download.index') }}"
-                class="translation duration-300 border bg-purple-200 border-purple-300 border-4 h-15 w-fit block p-3 m-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl">Загрузить гостевую книгу</a>
+            @if (count($messages))
+                <a href="{{ route('guest.book.download.index') }}"
+                    class="translation duration-300 border bg-purple-200 border-purple-300 border-4 h-15 w-fit block p-3 m-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl">Загрузить
+                    гостевую книгу</a>
 
-            @foreach ($messages as $message)
-                <div class="bg-purple-100 border-purple-300 border-4 rounded-lg p-3 h-min m-2">
-                    {{ $message->message }}
-                </div>
-            @endforeach
+                @foreach ($messages as $message)
+                    <div class="bg-purple-100 border-purple-300 border-4 rounded-lg p-3 h-min m-2">
+                        {{ $message->message }}
+                    </div>
+                @endforeach
+            @else
+                <p class="m-6 font-bold text-xl text-center mt-12">Тут пусто... Но это легко исправить!</p>
+            @endif
         </div>
     </div>
 @endsection

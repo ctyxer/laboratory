@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BlogCSVDownloadController;
 use App\Http\Controllers\DisciplineTestController;
 use App\Http\Controllers\GuestBookDownloadController;
 use App\Http\Controllers\GuestBookController;
@@ -71,3 +73,28 @@ Route::group([
 
 Route::get('/photo/album/index', [PhotoAlbumController::class, 'index'])
     ->name('photo.album.index');
+
+Route::group([
+    'prefix' => '/blog',
+    'as' => 'blog.'
+], function () {
+    Route::get('/index', [BlogController::class, 'index'])
+        ->name('index');
+
+    Route::post('/store', [BlogController::class, 'store'])
+        ->name('store');
+
+    Route::get('/create', [BlogController::class, 'create'])
+        ->name('create');
+
+    Route::group([
+        'prefix' => '/download',
+        'as' => 'download.'
+    ], function () {
+        Route::post('/store', [BlogCSVDownloadController::class, 'store'])
+            ->name('store');
+
+        Route::get('/create', [BlogCSVDownloadController::class, 'create'])
+            ->name('create');
+    });
+});
