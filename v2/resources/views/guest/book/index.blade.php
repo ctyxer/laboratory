@@ -37,7 +37,7 @@
             </div>
 
             <input type="submit" value="Отправить"
-                class='translation duration-300 border bg-purple-200 h-15 inline-block p-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl'>
+                class='btn-default m-0'>
         </form>
 
         <div>
@@ -49,6 +49,7 @@
 
                 @foreach ($messages as $message)
                     <div class="bg-purple-100 border-purple-300 border-4 rounded-lg p-3 h-min m-2">
+                        <p class="font-bold">{{ $message->full_name }}</p>
                         {{ $message->message }}
                     </div>
                 @endforeach

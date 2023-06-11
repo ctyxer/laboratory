@@ -7,7 +7,7 @@
     <div class="mx-[30%] max-lg:mx-[10%]">
         <p class="font-bold text-4xl mx-auto w-fit m-6">Редактор блога</p>
 
-        <a href="{{ route('blog.download.create') }}" class="translation duration-300 border bg-purple-200 h-15 inline-block p-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl">Загрузить CSV файл</a>
+        <a href="{{ route('blog.download.create') }}" class="btn-default m-0">Загрузить CSV файл</a>
         
 
         <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
@@ -31,7 +31,7 @@
                     class="w-full border-2 border-purple-400 rounded focus:border-purple-400 focus:outline-none 
                     @error('description') border-red-400 @enderror">{{ old('description') }}</textarea>
             </div>
-            <input type="submit" value="Загрузить" class="translation duration-300 border bg-purple-200 h-15 inline-block p-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl">
+            <input type="submit" value="Загрузить" class="btn-default m-0">
         </form>
     </div>
 @endsection

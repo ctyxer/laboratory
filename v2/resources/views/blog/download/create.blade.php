@@ -14,7 +14,7 @@
                 <input type="file" name="file" class="w-full border-2 bg-white border-purple-400 rounded focus:outline-none @error('file') border-red-400 {{ $message }} @enderror">
             </div>
 
-            <input type="submit" value="Загрузить" class="translation duration-300 border bg-purple-200 h-15 inline-block p-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl">
+            <input type="submit" value="Загрузить" class="btn-default m-0">
         </form>
     </div>
 @endsection

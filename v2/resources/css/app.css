@@ -12,6 +12,8 @@ body {
 
 }
 
-.show {
-    display: block;
+@layer components {
+    .btn-default {
+        @apply duration-300 border bg-purple-200 inline-block p-3 m-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl;
+    }
 }

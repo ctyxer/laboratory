@@ -18,17 +18,17 @@
 
         <div class="w-fit mx-auto">
             <a href="{{ route('discipline.test.index') }}"
-                class='translation duration-300 border bg-purple-200 h-15 inline-block p-3 m-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl'>Тест
+                class='btn-default'>Тест
                 по дисциплине</a>
 
             <a href="{{ route('contacts.index') }}"
-                class="translation duration-300 border bg-purple-200 h-15 inline-block p-3 m-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl">Контакты</a>
+                class="btn-default">Контакты</a>
 
             <a href="{{ route('interests.index') }}"
-                class="translation duration-300 border bg-purple-200 h-15 inline-block p-3 m-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl">Интересы</a>
+                class="btn-default">Интересы</a>
 
             <a href="{{ route('guest.book.index') }}"
-                class="translation duration-300 border bg-purple-200 h-15 inline-block p-3 m-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl">Гостевая книга</a>
+                class="btn-default">Гостевая книга</a>
 
 
         </div>

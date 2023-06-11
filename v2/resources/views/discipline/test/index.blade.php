@@ -90,7 +90,7 @@
                 </div>
 
                 <input type="submit" value="Отправить"
-                    class='translation duration-300 border bg-purple-200 h-15 inline-block p-3 rounded-lg hover:bg-purple-300 hover:shadow text-xl'>
+                    class='btn-default m-0'>
         </form>
     </div>
 @endsection
