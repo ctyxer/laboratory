@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\CheckUniqueLoginController;
 use App\Http\Controllers\StatisticController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,5 +20,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/v1/statistics/send', [StatisticController::class, 'send'])
-    ->name('v1.statistics.send');
+Route::group([
+    'prefix' => '/v1',
+    'as' => 'v1.',
+], function () {
+    Route::get('/statistics/send', [StatisticController::class, 'send'])
+        ->name('statistics.send');
+
+    Route::post('/auth/login/check', [CheckUniqueLoginController::class, 'index'])
+        ->name('auth.login.check');
+});

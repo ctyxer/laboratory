@@ -21,7 +21,7 @@ class RegisterController extends Controller
         $validation = Validator::make($request->all(), [
             'full_name' => ['required', new FullName()],
             'login' => 'required|unique:users,login',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email',
             'password' => 'required|min:8'
         ], [
             'required' => 'Необходимо заполнить это поле',

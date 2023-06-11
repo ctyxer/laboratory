@@ -3,7 +3,6 @@
 @section('title', 'Регистрация')
 
 @section('content')
-
     <div class="h-fit w-[28rem] mx-auto">
         @include('layouts.message')
 
@@ -22,14 +21,15 @@
                 @enderror
             </div>
 
-            <div class="my-4">
+            <div class="my-4" id='login'>
                 <label for="login" class="block">Логин</label>
                 <input type="text" name="login"
                     class="w-full border-2 border-purple-400 rounded focus:outline-none @error('login') border-red-400 @enderror"
-                    placeholder="mashasua2" value="{{ old('login') }}">
+                    placeholder="mashasua2" value="{{ old('login') }}" onchange="checkUniqueLogin(this)" id="login-input">
                 @error('login')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
+                <span class="text-red-500 text-sm hidden" id="login-span">Данный логин уже занят</span>
             </div>
 
             <div class="my-4">
@@ -47,7 +47,8 @@
             <div class="my-4">
                 <label for="password" class="block">Пароль</label>
                 <input type="password" name="password"
-                    class="w-full border-2 border-purple-400 rounded focus:outline-none @error('password') border-red-400 @enderror">
+                    class="w-full border-2 border-purple-400 rounded focus:outline-none @error('password') border-red-400 @enderror"
+                    autocomplete="current-password">
                 @error('password')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
@@ -56,5 +57,42 @@
             <input type="submit" class="btn-default m-0">
         </form>
     </div>
+
+    <script>
+        let uniqueLogin = true;
+
+        async function checkUniqueLogin(input) {
+            let xmlDoc = document.implementation.createDocument(null, "data");
+            let elements = xmlDoc.getElementsByTagName("data");
+
+            let node = xmlDoc.createElement("login");
+            node.innerHTML = input.value;
+            elements[0].appendChild(node);
+
+            let serializer = new XMLSerializer();
+            let xmlString = serializer.serializeToString(xmlDoc);
+
+            let response = await fetch('{{ route('v1.auth.login.check') }}', {
+                'headers': {
+                    'Content-Type': 'application/json',
+                    "Accept": "application/json",
+                    "X-Requested-With": "XMLHttpRequest",
+                    "X-CSRF-Token": document.querySelector('input[name="_token"]').value
+                },
+                'method': 'POST',
+                'body': JSON.stringify({
+                    xmlString
+                })
+            });
+
+            let unique = !(await response.json());
+
+            if (unique != uniqueLogin) {
+                uniqueLogin = !uniqueLogin;
+                document.querySelector('#login-input').classList.toggle('border-red-500');
+                document.querySelector('#login-span').classList.toggle('hidden');
+            }
+        }
+    </script>
 
 @endsection

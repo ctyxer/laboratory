@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <title>@yield('title')</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    @vite(['resources/css/app.css'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
 </head>
@@ -44,6 +44,4 @@
     </div>
 
     @yield('content')
-
-    @vite('resources/js/app.js')
 </body>
