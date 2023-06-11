@@ -4,15 +4,11 @@
 
 @section('content')
 
-    @if (Session::has('Сообщение'))
-        <div class="bg-green-400 border-2 border-green-600 rounded-xl translation hover:bg-green-500 duration-300 m-6 p-3">
-            <p class="font-bold text-lg">Успешно</p>
-        </div>
-    @endif
-
     @include('layouts.errors.validation')
 
     <div class="mx-[30%] max-lg:mx-[10%]">
+        @include('layouts.message')
+
         <p class="m-6 font-bold text-4xl text-center">Форма ввода данных</p>
 
         <form action="{{ route('contacts.store') }}" method="POST" id='contacts'>
@@ -85,8 +81,7 @@
                 <textarea name="Сообщение" id="Сообщение" cols="30" rows="10"
                     class="w-full border-2 border-purple-400 rounded focus:border-purple-400 focus:outline-none"></textarea>
             </div>
-            <input type="submit" value="Отправить"
-                class='btn-default m-0'>
+            <input type="submit" value="Отправить" class='btn-default m-0'>
         </form>
     </div>
 @endsection

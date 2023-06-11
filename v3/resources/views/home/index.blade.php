@@ -5,6 +5,8 @@
 @section('content')
 
     <div class="mx-[20%] max-lg:mx-[10%]">
+        @include('layouts.message')
+
         <p class="font-bold text-4xl mx-auto w-fit m-6">Степаненко Мария Денисовна</p>
         <p class="text-2xl mx-auto w-fit m-6">ГРУППА: ИС/Б-20-1-О</p>
 

@@ -38,6 +38,6 @@ class BlogController extends Controller
             $request->file('image')->storeAs('public/images', $image_name);
         }
 
-        return redirect()->route('admin.blog.index');
+        return redirect()->route('blog.index');
     }
 }

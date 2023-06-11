@@ -5,6 +5,8 @@
 @section('content')
 
     <div class="mx-[20%] max-lg:mx-[10%]">
+        @include('layouts.message')
+        
         <p class="m-6 font-bold text-4xl text-center">Гостевая книга</p>
         <p class="m-6 font-bold text-3xl text-center">Оставить сообщение</p>
         <form action="{{ route('guest.book.store') }}" method="POST">

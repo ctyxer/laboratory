@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Панель администратора')
+@section('title', 'Стаатистика')
 
 @section('content')
 
     <div class="mx-[10%]">
+        @include('layouts.message')
+
         <p class="text-4xl m-6 mx-auto w-fit mt-10 font-bold">Статистика сайта</p>
 
         <div class="w-fit mx-auto">

@@ -5,6 +5,8 @@
 @section('content')
 
     <div class="mx-[30%] max-lg:mx-[10%]">
+        @include('layouts.message')
+
         <p class="font-bold text-4xl mx-auto w-fit m-6">Редактор блога</p>
 
         <a href="{{ route('admin.blog.download.create') }}" class="btn-default m-0">Загрузить CSV файл</a>

@@ -5,6 +5,8 @@
 @section('content')
 
     <div class="mx-[20%] max-lg:mx-[10%]">
+        @include('layouts.message')
+
         <p class="font-bold text-4xl mx-auto w-fit m-6">Мой блог</p>
 
         <div class="columns-xs space-y-4 my-2">

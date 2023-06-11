@@ -22,6 +22,6 @@ class ContactController extends Controller
             return redirect()->back()->with('errors', ContactFormValidator::message($request));
         }
 
-        return redirect()->back()->with('message', 'Успешно');
+        return redirect()->back()->with('statusMessage', 'Успешно');
     }
 }

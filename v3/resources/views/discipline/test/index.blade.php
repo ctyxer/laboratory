@@ -4,13 +4,9 @@
 
 @section('content')
 
-    @if (Session::has('message'))
-        <div class="bg-green-400 border-2 border-green-600 rounded-xl translation hover:bg-green-500 duration-300 m-6 p-3">
-            <p class="font-bold text-lg">Успешно. Ваши баллы: {{ Session::get('message') }} (макс. 3)</p>
-        </div>
-    @endif
-
     <div class="mx-[30%] max-lg:mx-[10%]">
+        @include('layouts.message')
+
         <p class="m-6 font-bold text-4xl text-center">Тест по дисциплине</p>
 
         <form action="{{ route('discipline.test.store') }}" method="POST" id='test'>
@@ -70,27 +66,26 @@
             </div>
 
             <div class="my-4">
-                        <p class="font-bold @error('question_2') text-red-500 @enderror">Вопрос №2</p>
-                        <label for="question_2">2+2=?:</label>
-                        <select name="question_2" id="question_2"
-                            class="w-full border-2 border-purple-400 rounded block @error('question_2') border-red-500 @enderror">
-                            <option value="null" selected disabled>Выберите ответ</option>
-                            <option value="100">100</option>
-                            <option value="4">4</option>
-                        </select>
-                </div>
+                <p class="font-bold @error('question_2') text-red-500 @enderror">Вопрос №2</p>
+                <label for="question_2">2+2=?:</label>
+                <select name="question_2" id="question_2"
+                    class="w-full border-2 border-purple-400 rounded block @error('question_2') border-red-500 @enderror">
+                    <option value="null" selected disabled>Выберите ответ</option>
+                    <option value="100">100</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
 
-                <div class="my-4">
-                    <p class="font-bold @error('question_3') text-red-500 @enderror">Вопрос №3</p>
-                    <label for="question_3" class="block">Имя первого программиста? (на русской раскладке в порядке "Имя
-                        Фамилия")</label>
-                    <input type="text" name="question_3"
-                        class="w-full border-2 border-purple-400 rounded focus:outline-none @error('question_3') border-red-500 @enderror"
-                        placeholder="Линус Торвальдс" value="{{ old('question_3') }}">
-                </div>
+            <div class="my-4">
+                <p class="font-bold @error('question_3') text-red-500 @enderror">Вопрос №3</p>
+                <label for="question_3" class="block">Имя первого программиста? (на русской раскладке в порядке "Имя
+                    Фамилия")</label>
+                <input type="text" name="question_3"
+                    class="w-full border-2 border-purple-400 rounded focus:outline-none @error('question_3') border-red-500 @enderror"
+                    placeholder="Линус Торвальдс" value="{{ old('question_3') }}">
+            </div>
 
-                <input type="submit" value="Отправить"
-                    class='btn-default m-0'>
+            <input type="submit" value="Отправить" class='btn-default m-0'>
         </form>
     </div>
 @endsection

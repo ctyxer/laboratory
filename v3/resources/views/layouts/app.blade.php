@@ -12,22 +12,35 @@
 
 <body>
     <script>
-        async function sendStatistic(){
+        async function sendStatistic() {
             let response = await fetch("{{ route('v1.statistics.send') }}");
         }
         sendStatistic();
     </script>
 
-    <a href="{{ url()->previous() }}"
-        class='absolute translation duration-300 border bg-purple-200 h-15 block p-3 my-3 rounded-r-lg hover:bg-purple-300 hover:shadow text-xl'>Назад</a>
-
-    <div class="columns-auto h-auto mx-auto w-fit m-6">
+    <div class="columns-auto h-auto w-full m-1">
         <a href="/" class='btn-default'>Главная</a>
 
         <a href="{{ route('photo.album.index') }}" class="btn-default">Фотоальбом</a>
 
         <a href="{{ route('blog.index') }}" class="btn-default">Мой блог</a>
+
         <div id="current_time" class="inline-block text-xl font-bold"></div>
+
+        @guest
+            <a href="{{ route('auth.register.index') }}" class='btn-default float-right'>Авторизоваться</a>
+
+            <a href="{{ route('auth.login.index') }}" class='btn-default float-right'>Войти</a>
+        @endguest
+
+        @auth
+            <form action="{{ route('auth.logout') }}"  class='btn-default float-right' method="POST">
+                @csrf
+                <input type="submit" value="Выйти">
+            </form>
+
+            <p class='btn-default float-right'>{{ auth()->user()->full_name }}</p>
+        @endauth
     </div>
 
     @yield('content')

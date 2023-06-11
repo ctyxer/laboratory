@@ -6,7 +6,10 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\Interest;
 use App\Models\Photo;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -73,5 +76,22 @@ class DatabaseSeeder extends Seeder
         $this->createIntrerest(['Невидимый гость', 'В основном смотрю психологические триллеры и романтические комедии', $favoriteBooks->id]);
         $this->createIntrerest(['Гарри Поттер', 'В основном смотрю психологические триллеры и романтические комедии', $favoriteBooks->id]);
         $this->createIntrerest(['Отпуск по обмену', 'В основном смотрю психологические триллеры и романтические комедии', $favoriteBooks->id]);
+    
+        /**Seed users */
+        $roleDefault = Role::factory()->create([
+            'name' => 'Обычный'
+        ]);
+        
+        $roleAdmin = Role::factory()->create([
+            'name' => 'Администратор'
+        ]);
+
+        $admin = User::factory()->create([
+            'full_name' => 'Степаненко Мария Денисовна',
+            'login' => 'mashasua2', 
+            'email' => 'mail@mail.com',
+            'password' => Hash::make('admin'),
+            'role_id' => $roleAdmin->id
+        ]);
     }
 }

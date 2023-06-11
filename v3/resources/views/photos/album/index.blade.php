@@ -5,6 +5,8 @@
 @section('content')
 
     <div class="columns-xs mx-[20%] space-y-4 max-lg:mx-[10%]">
+        @include('layouts.message')
+        
         @foreach ($photos as $photo)
             <div class="bg-purple-100 border-purple-300 border-4 rounded-lg p-3 h-min break-inside-avoid-column">
                 <img src="{{ asset($photo->file_path) }}" title="{{ $photo->title }}" class="rounded h-auto" />

@@ -35,6 +35,16 @@ class DisciplineTestController extends Controller
             'question_3_correct' => AnswersValidator::thirdQuestionIsCorrect($request->question_3),
         ]);
 
-        return redirect()->back()->with('message', $score);
+        if(auth()->check()) {
+            return redirect()->back()->with([
+                'statusMessage' => 'Успешно',
+                'statusSubMessage' => 'Ваши баллы: ' . $score . ' (макс. 3)'
+            ]);
+        }
+        
+        return redirect()->back()->with([
+            'statusMessage' => 'Успешно',
+            'statusSubMessage' => 'Чтобы узнать результат необходимо войти в аккаунт'
+        ]);
     }
 }

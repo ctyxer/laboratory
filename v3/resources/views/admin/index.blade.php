@@ -5,6 +5,8 @@
 @section('content')
 
     <div class="mx-[20%] max-lg:mx-[10%]">
+        @include('layouts.message')
+
         <p class="text-4xl m-6 mx-auto w-fit mt-10 font-bold">Панель администратора</p>
         <p class="text-2xl m-6 mx-auto w-fit mt-10">Доступные ссылки:</p>
 
