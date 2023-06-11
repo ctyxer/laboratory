@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Validator;
@@ -10,7 +11,7 @@ class BlogCSVDownloadController extends Controller
 {
     public function create(Request $request)
     {
-        return view('blog.download.create');
+        return view('admin.blog.download.create');
     }
     public function store(Request $request)
     {
@@ -33,7 +34,7 @@ class BlogCSVDownloadController extends Controller
         while ($row = fgetcsv($file)) {
             $header[0] = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $header[0]);
             $posts[] = array_combine($header, $row);
-        } 
+        }
 
         fclose($file);
 

@@ -7,10 +7,10 @@
     <div class="mx-[30%] max-lg:mx-[10%]">
         <p class="font-bold text-4xl mx-auto w-fit m-6">Редактор блога</p>
 
-        <a href="{{ route('blog.download.create') }}" class="btn-default m-0">Загрузить CSV файл</a>
+        <a href="{{ route('admin.blog.download.create') }}" class="btn-default m-0">Загрузить CSV файл</a>
         
 
-        <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.blog.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="my-4">
                 <label for="title" class="block">Заголовок</label>
