@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
@@ -9,6 +9,15 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+    public function index()
+    {
+        $posts = Post::latest()->get();
+
+        return view('admin.blog.index', [
+            'posts' => $posts
+        ]);
+    }
+
     public function create()
     {
         return view('admin.blog.create');
@@ -38,6 +47,6 @@ class BlogController extends Controller
             $request->file('image')->storeAs('public/images', $image_name);
         }
 
-        return redirect()->route('blog.index');
+        return redirect()->route('admin.blog.index');
     }
 }

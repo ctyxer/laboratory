@@ -10,11 +10,18 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $pagination = 10;
+        $pagination = 12;
         $posts = Post::latest()->paginate($pagination);
 
         return view('blog.index', [
             'posts' => $posts,
+        ]);
+    }
+
+    public function show(Request $request, Post $post)
+    {
+        return view('blog.show', [
+            'post' => $post
         ]);
     }
 }

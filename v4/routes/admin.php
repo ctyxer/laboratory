@@ -25,6 +25,9 @@ Route::group([
         'prefix' => '/blog',
         'as' => 'blog.'
     ], function () {
+        Route::get('/index', [BlogController::class, 'index'])
+            ->name('index');
+
         Route::post('/store', [BlogController::class, 'store'])
             ->name('store');
 

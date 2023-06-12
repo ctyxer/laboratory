@@ -11,7 +11,8 @@
 
         <div class="columns-xs space-y-4 my-2">
             @foreach ($posts as $post)
-                <div class="bg-purple-100 border-purple-300 border-4 rounded-lg p-3 h-min break-inside-avoid-column">
+                <div class="bg-purple-100 border-purple-300 border-4 rounded-lg p-3 h-min break-inside-avoid-column hover:cursor-pointer"
+                onclick="window.location.href = '{{ route('blog.show', [$post]) }}'">
                     @if ($post->image_path != null)
                         <img src="{{ asset($post->image_path) }}" title="{{ $post->title }}" class="rounded h-auto" />
                     @endif

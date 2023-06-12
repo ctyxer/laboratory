@@ -10,6 +10,7 @@
         <p class="font-bold text-4xl mx-auto w-fit m-6">Редактор блога</p>
 
         <a href="{{ route('admin.blog.download.create') }}" class="btn-default m-0">Загрузить CSV файл</a>
+        <a href="{{ route('admin.blog.index') }}" class="btn-default m-0">Существующие посты</a>
         
 
         <form action="{{ route('admin.blog.store') }}" method="POST" enctype="multipart/form-data">

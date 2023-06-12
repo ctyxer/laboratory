@@ -75,6 +75,9 @@ Route::group([
 ], function () {
     Route::get('/index', [BlogController::class, 'index'])
         ->name('index');
+
+    Route::get('/{post}/show', [BlogController::class, 'show'])
+        ->name('show');
 });
 
 require __DIR__ . '/auth.php';
